@@ -36,3 +36,7 @@ app.use(helmet.frameguard({ action: 'sameorigin' }));
 app.use(helmet.hsts({ maxAge: 5184000 }));
 app.use(helmet.noCache());
 // TODO read and apply CSP
+
+// view engine
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '../views'));
