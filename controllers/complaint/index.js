@@ -100,3 +100,55 @@ exports.update = async (input) => {
     return Promise.reject(new Error('UPDATE_COMPLAINT_FAILED'));
   }
 };
+
+exports.delete = async (input) => {
+  const { id } = input;
+
+  const deleted = false;
+
+  const complaint = Complaint
+  	.query()
+    .patch({ deleted: true })
+    .where({ id, deleted });
+
+  const report = Report
+  	.query()
+    .patch({ deleted: true })
+    .where({ id, complaintId: complaint.id, deleted });
+
+  const reporter = Reporter
+  	.query()
+    .patch({ deleted: true })
+    .where({ id, complaintId: complaint.id, deleted });
+
+  const transaction = Transaction
+  	.query()
+    .patch({ deleted: true })
+    .where({ id, complaintId: complaint.id, deleted });
+
+  const file = File
+  	.query()
+    .patch({ deleted: true })
+    .where({ id, complaintId: complaint.id, deleted });
+
+  const incharge = Incharge
+  	.query()
+    .patch({ deleted: true })
+    .where({ id, complaintId: complaint.id, deleted });
+
+  const note = Note
+  	.query()
+    .patch({ deleted: true })
+    .where({ id, complaintId: complaint.id, deleted });
+
+  await Promise.all([ 
+  	report,
+  	reporter,
+  	transaction,
+  	file,
+  	incharge,
+  	note,
+  ]);
+
+  return complaint;
+};
