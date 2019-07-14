@@ -15,3 +15,5 @@ const limiter = require('../libraries/bruteforce');
 const xsrfProtection = xsrf({ cookie: true });
 
 global.xsrfProtection = xsrfProtection;
+
+const app = express();
