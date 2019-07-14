@@ -39,3 +39,14 @@ exports.createRefreshToken = (userId, type) => {
 exports.createAccessToken = (userId, type) => {
 	return this.sign(userId, type, accessKey, (1 * 5));
 }
+
+exports.verifyAccessToken = (token) => {
+	const verify = this.verify(token, 'access');
+
+	// 401
+	if (verify !== 'jwt expired' && !verify.id) {
+		return false;
+	}
+
+	return verify;
+}
