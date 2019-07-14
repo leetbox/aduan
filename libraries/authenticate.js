@@ -17,3 +17,17 @@ exports.sign = (userId, type, key, duration) => {
 
 	return token;
 }
+
+exports.verify = (token, type) => {
+	let ret = null;
+	try {
+		const key = type === 'access' ? accessKey : refreshKey;
+		const data = jwt.verify(token, key);
+
+		ret = data;
+	} catch(error) {
+		ret = error.message;
+	}
+
+	return ret;
+}
