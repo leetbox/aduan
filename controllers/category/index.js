@@ -60,3 +60,27 @@ exports.read = async (input) => {
       return rows.results;
     });
 }
+
+exports.update = async (input) => {
+	const {
+		id,
+		name,
+	} = input;
+
+	const u = input;
+
+	const deleted = false;
+
+	const exist = await Category
+		.query()
+		.whereNot({ id, deleted })
+		.andWhere({ name })
+		.first();
+
+	if (!isEmpty(exist)) return Promise.reject(new Error('CATEGORY_EXIST'));
+
+	return Category
+		.query()
+		.where({ id, deleted })
+		.patch(u);
+};
