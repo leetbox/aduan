@@ -53,3 +53,6 @@ app.use(hpp());
 app.use(morgan('dev'));
 
 const { PORT } = require('../settings/express');
+
+// views
+app.use('/', require('../views/render/index'));
