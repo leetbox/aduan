@@ -66,3 +66,37 @@ exports.read = async (input) => {
       return rows.results;
     });
 }
+
+exports.update = async (input) => {
+  const { id, category } = input;
+  const u = input;
+
+  if (category) u.category = JSON.stringify(category);
+
+
+  const deleted = false;
+
+  try {
+    const row = await transaction(knex, async (trx) => {
+      const complaint = await Complaint.query(trx)
+        .where({ id, deleted })
+        .upsertGraph(u, {
+          noRelate: true,
+          noDelete: true,
+        })
+        .eager('[report, reporter, transaction, file, incharge, note]')
+        .first()
+        .throwIfNotFound();
+
+      return complaint;
+    });
+
+    return row;
+  } catch (error) {
+    if (error instanceof Complaint.NotFoundError) {
+      return Promise.reject(new Error('COMPLAINT_NOT_FOUND'));
+    }
+
+    return Promise.reject(new Error('UPDATE_COMPLAINT_FAILED'));
+  }
+};
