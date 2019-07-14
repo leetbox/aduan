@@ -67,3 +67,10 @@ app.use('/api/complaint', require('./complaint'));
 
 // frontend request
 app.use('/request/user', require('./frontend/user'));
+
+
+const server = http
+	.createServer(app)
+	.listen(PORT || 3000, () => {
+		console.log(`ADUAN START at PORT ${PORT}`);
+	});
