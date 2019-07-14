@@ -84,3 +84,57 @@ exports.read = async (input) => {
       return rows.results;
     });
 }
+
+exports.update = async (input) => {
+	const {
+		id,
+		ic,
+		phone,
+		email,
+		userType,
+		picture,
+		oldPassword,
+		newPassword,
+		verified,
+	} = input;
+
+	const u = input;
+
+	function filter(fun) {
+		if (ic) fun.orWhere({ ic });
+		if (phone) fun.orWhere({ phone });
+		if (email) fun.orWhere({ email });
+
+		return fun;
+	}
+
+	const deleted = false;
+
+	let password = null;
+
+	const existing = await User
+		.query()
+		.findOne({ id });
+
+	if (isEmpty(existing)) return Promise.reject(new Error('USER_NOT_FOUND'));
+
+	if (newPassword && oldPassword && bcrypt.compareSync(oldPassword, existing.hash)) {
+		u.hash = bcrypt.hashSync(newPassword, 10);
+	}
+
+	delete u.newPassword;
+	delete u.oldPassword;
+
+	const exist = await User
+		.query()
+		.whereNot({ id, deleted })
+		.andWhere(qb => filter(qb))
+		.first();
+
+	if (!isEmpty(exist)) return Promise.reject(new Error('USER_EXIST'));
+
+	return User
+		.query()
+		.where({ id, deleted })
+		.patch(u);
+};
