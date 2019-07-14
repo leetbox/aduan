@@ -53,6 +53,9 @@ app.use(hpp());
 
 app.use(morgan('dev'));
 
+// xsrf error handler
+app.use(blockXSRF);
+
 const { PORT } = require('../settings/express');
 
 // views
