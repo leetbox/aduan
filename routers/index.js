@@ -49,3 +49,5 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 // prevent http parameter pollution
 app.use(hpp());
+
+app.use(morgan('dev'));
