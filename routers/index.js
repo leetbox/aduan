@@ -47,3 +47,5 @@ app.use('/assets', express.static(path.join(`${__dirname}/../views/`, 'assets'))
 app.use(bodyParser.json());
 // create application/x-www-form-urlencoded parser
 app.use(bodyParser.urlencoded({ extended: false }));
+// prevent http parameter pollution
+app.use(hpp());
