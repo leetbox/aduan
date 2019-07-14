@@ -20,3 +20,7 @@ const app = express();
 
 // to parse cookie (.;)
 app.use(cookieParser());
+
+// request limiter
+app.use("/api/", limiter.all);
+app.use("/api/user/login", limiter.auth);
