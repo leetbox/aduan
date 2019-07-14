@@ -69,3 +69,48 @@ exports.renewAccessToken = async (refreshToken) => {
 	// return new access token if refresh token is in db
 	return this.createAccessToken(verify.id, verify.type);
 }
+
+// used as express middlware
+exports.checkAuth = () => async (req, res, next) => {
+	const {
+		refreshToken,
+		accessToken,
+	} = Cookie.getCookie(req);
+
+	// both token must be available
+	if (!refreshToken || !accessToken) {
+		res.redirect('/masuk');
+		return;
+	};
+
+	// duplicate, remove later in renew access token
+	const userData = this.verify(refreshToken, 'refresh');
+
+	userData.id ? res.locals.userId = userData.id : false;
+
+	const accessIsValid = this.verifyAccessToken(accessToken);
+
+	if (accessIsValid === false) {
+		res.redirect('/masuk');
+		return;
+	}
+
+	let newAccessToken = null;
+
+	if (accessIsValid === 'jwt expired') {
+		newAccessToken = await this.renewAccessToken(refreshToken);
+
+		if (!newAccessToken) {
+			res.redirect('/masuk');
+			return;
+		}
+
+		// set cookie
+		Cookie.setCookie(res, {
+			accessToken: newAccessToken,
+			refreshToken,
+		})
+	}
+
+	next();
+};
