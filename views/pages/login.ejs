@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>E-Aduan Semboyan 1 Malaysia</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- App favicon -->
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+
+        <!-- App css -->
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+
+    </head>
+
+    <body>
+
+        <div class="account-pages mt-5 mb-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6 col-xl-5">
+                        <div class="card">
+
+                            <div class="card-body p-4">
+                                
+                                <div class="text-center w-75 m-auto">
+                                    <a href="utama">
+                                        <span><img src="assets/images/logo-aduan.png" alt="" height="22"></span>
+                                    </a>
+                                    <!--CONDITION-->
+                                    <% if(flash){ %>
+                                        <p class="text-muted mb-3 mt-3">Pengurusan Aduan Komuniti</p>
+                                    <% } else { %>
+                                        <p class="text-muted mb-4 mt-3">Pengurusan Aduan Komuniti</p>
+                                    <% } %>
+                                </div>
+                                <!--CONDITION-->
+                                <% if(flash){ %>
+                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        Maaf, email atau kata laluan anda tidak sah.
+                                    </div>
+                                <% } %>
+
+
+                                <form action="/request/user/login" method="post">
+                                    <input type="hidden" name="_csrf" value="<%= xsrfToken %>">
+
+                                    <div class="form-group mb-3">
+                                        <label for="emailaddress">Email</label>
+                                        <input class="form-control" type="email" name="email" required="" placeholder="Masukkan email">
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <label for="password">Kata Laluan</label>
+                                        <input class="form-control" type="password" required="" name="password" placeholder="Masukkan kata Laluan">
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="checkbox-signin" checked>
+                                            <label class="custom-control-label" for="checkbox-signin">Ingat saya?</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mb-0 text-center">
+                                        <div class="row">
+                                            <div class="offset-3 col-6 offset-3">
+                                                <button class="btn btn-dark btn-block" type="submit"> Masuk </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 text-center mt-3">
+                                        <p> <a href="pages-recoverpw.html" class="text-blue ml-1">Lupa kata laluan?</a></p>
+                                    </div> <!-- end col -->
+                                </form>
+
+                            </div> <!-- end card-body -->
+                        </div>
+                        <!-- end card -->
+                        <!-- end row -->
+
+                    </div> <!-- end col -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </div>
+        <!-- end page -->
+
+
+        <footer class="footer footer-alt">
+            Semboyan 1 Malaysia | Lokal Network
+        </footer>
+
+        <!-- Vendor js -->
+        <script src="assets/js/vendor.min.js"></script>
+
+        <!-- App js -->
+        <script src="assets/js/app.min.js"></script>
+        
+    </body>
+</html>
