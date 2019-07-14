@@ -10,3 +10,8 @@ const morgan = require('morgan');
 const path = require('path');
 
 const limiter = require('../libraries/bruteforce');
+
+// xsrf protection
+const xsrfProtection = xsrf({ cookie: true });
+
+global.xsrfProtection = xsrfProtection;
