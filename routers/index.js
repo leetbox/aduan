@@ -24,3 +24,14 @@ app.use(cookieParser());
 // request limiter
 app.use("/api/", limiter.all);
 app.use("/api/user/login", limiter.auth);
+
+// helmet
+app.use(helmet.hidePoweredBy({ setTo: 'Ridhuan Hassan' }));
+app.use(helmet.dnsPrefetchControl());
+app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
+app.use(helmet.xssFilter()); // basic
+app.use(helmet.noSniff());
+app.use(helmet.ieNoOpen());
+app.use(helmet.frameguard({ action: 'sameorigin' }));
+app.use(helmet.hsts({ maxAge: 5184000 }));
+app.use(helmet.noCache());
