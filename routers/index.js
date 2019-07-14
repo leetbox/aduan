@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const xsrf = require('csurf');
+const blockXSRF = require('../libraries/block-xsrf');
 const helmet = require('helmet');
 const hpp = require('hpp');
 const https = require('https');
