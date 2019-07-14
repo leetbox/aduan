@@ -33,3 +33,36 @@ exports.create = async (input) => {
     return Promise.reject(new Error('CREATE_COMPLAINT_FAILED'));
   }
 };
+
+exports.read = async (input) => {
+	const {
+		id,
+		page,
+		limit,
+	} = input;
+
+	if (page && page < 1) return Promise.reject(new Error('RULE_PAGE_>_0'));
+  if (limit && limit < 1) return Promise.reject(new Error('RULE_LIMIT_>_0'));
+
+  const q = {};
+  q.deleted = false;
+
+  if (id) q.id = id;
+
+  const newLimit = parseInt(limit, 10) || pagination.limit;
+  const newPage = parseInt(page, 10) - 1 || pagination.page;
+
+  return Complaint
+    .query()
+    .where(q)
+    .eager('[report, reporter, transaction, file, incharge, note]')
+    .page(newPage, newLimit)
+    .orderBy('id', 'desc')
+    .then((rows) => {
+      if (isEmpty(rows.results)) return Promise.reject(new Error('COMPLAINT_NOT_FOUND'));
+
+      if (id) return rows.results[0];
+
+      return rows.results;
+    });
+}
