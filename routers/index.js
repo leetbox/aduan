@@ -35,3 +35,4 @@ app.use(helmet.ieNoOpen());
 app.use(helmet.frameguard({ action: 'sameorigin' }));
 app.use(helmet.hsts({ maxAge: 5184000 }));
 app.use(helmet.noCache());
+// TODO read and apply CSP
