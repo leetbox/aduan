@@ -12,3 +12,13 @@ exports.setCookie = (res, data) => {
 
     // TODO: differentiate maxAge for accessToken and refreshToken?
 };
+
+exports.getCookie = (req) => {
+  const refreshToken = req.cookies.refreshToken;
+  const accessToken = req.cookies.accessToken;
+
+  return ({
+  	refreshToken,
+  	accessToken,
+  });
+};
