@@ -50,3 +50,22 @@ exports.verifyAccessToken = (token) => {
 
 	return verify;
 }
+
+exports.renewAccessToken = async (refreshToken) => {
+	const verify = this.verify(refreshToken, refreshKey);
+
+	// 401 require relogin
+	if (verify !== 'jwt expired' && !verify.id) {
+		return false;
+	}
+
+	// check if exist in db
+	const token = await TokenCtrl.read({ userId: verify.id, refreshToken })
+		.then(data => data)
+		.catch(err => err);
+
+	if (isEmpty(token)) return false;
+
+	// return new access token if refresh token is in db
+	return this.createAccessToken(verify.id, verify.type);
+}
