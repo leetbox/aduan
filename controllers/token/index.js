@@ -52,3 +52,13 @@ exports.read = async (input) => {
       return rows[0];
     });
 }
+
+exports.delete = async (input) => {
+  const { userId, refreshToken } = input;
+  const deleted = false;
+
+  return Token
+  	.query()
+    .where({ userId, refreshToken, deleted })
+    .delete();
+};
