@@ -178,3 +178,18 @@ exports.login = async (email, password) => {
 		accessToken,
 	});
 }
+
+exports.logout = async (userId, refreshToken) => {
+	// logout 
+	const blacklist = await TokenCtrl.delete({
+		userId,
+		refreshToken,
+	})
+
+	if (!blacklist) return false;
+
+	// todo ringbell blacklist not working ^
+
+	return true;
+}
+
