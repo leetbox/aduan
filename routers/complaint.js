@@ -44,3 +44,20 @@ router.patch('/:id', (req, res) => {
 		})
 	);
 });
+
+router.delete('/:id', (req, res) => {
+	const input = {};
+	input.id = req.params.id;
+
+	return complaintController
+		.delete(input)
+		.then(data => res.sendStatus(204))
+		.catch(error => res.status(400).json({
+			error: {
+				message: error.message,
+			},
+		})
+	);
+});
+
+module.exports = router;
