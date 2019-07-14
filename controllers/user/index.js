@@ -148,3 +148,33 @@ exports.delete = async (input) => {
     .where({ id, deleted })
     .delete();
 };
+
+exports.login = async (email, password) => {
+	// user exist?
+	const user = await this.read({ email })
+		.then(data => data[0])
+		.catch(err => err);
+
+	if (isEmpty(user) || user instanceof Error) return Promise.reject(new Error('USER_NOT_FOUND'));
+
+	const hash = bcrypt.compareSync(password, user.hash);
+
+	if (!hash) return Promise.reject(new Error('INVALID_PASSWORD'));
+	
+	// create access and refresh token
+	const refreshToken = auth.createRefreshToken(user.id, user.userType);
+	const accessToken = auth.createAccessToken(user.id, user.userType);
+
+	// store refresh token in token table for session validation
+	const token = await TokenCtrl.create({ userId: user.id, refreshToken })
+		.then(data => data)
+		.catch(err => err);
+	
+	if (isEmpty(token) || token instanceof Error) return Promise.reject(new Error('CREATE_TOKEN_FAILED'));
+
+	// return refresh token and access token
+	return ({
+		refreshToken,
+		accessToken,
+	});
+}
