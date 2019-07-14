@@ -17,3 +17,6 @@ const xsrfProtection = xsrf({ cookie: true });
 global.xsrfProtection = xsrfProtection;
 
 const app = express();
+
+// to parse cookie (.;)
+app.use(cookieParser());
