@@ -83,3 +83,14 @@ const server = http
 	.listen(PORT || 3000, () => {
 		console.log(`ADUAN START at PORT ${PORT}`);
 	}) */
+
+process.on('SIGTERM', () => {
+	// TODO
+});
+
+process.on('SIGINT', () => {
+	server.close(() => {
+    console.log('HTTP CLOSED');
+    process.exit(1);
+  });
+});
