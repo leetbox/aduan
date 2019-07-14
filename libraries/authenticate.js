@@ -35,3 +35,7 @@ exports.verify = (token, type) => {
 exports.createRefreshToken = (userId, type) => {
 	return this.sign(userId, type, refreshKey, (15 * 60));
 }
+
+exports.createAccessToken = (userId, type) => {
+	return this.sign(userId, type, accessKey, (1 * 5));
+}
