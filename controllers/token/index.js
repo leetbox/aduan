@@ -28,3 +28,27 @@ exports.create = async (input) => {
 		.query()
 		.insert(i); // mysql don't need first
 };
+
+exports.read = async (input) => {
+	const {
+		userId,
+		refreshToken,
+	} = input;
+
+	const deleted = false;
+
+	const q = {
+		userId,
+		refreshToken,
+		deleted,
+	}
+
+  return Token
+    .query()
+    .where(q)
+    .then((rows) => {
+      if (isEmpty(rows[0])) return Promise.reject(new Error('TOKEN_NOT_FOUND'));
+
+      return rows[0];
+    });
+}
