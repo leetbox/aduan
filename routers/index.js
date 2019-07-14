@@ -56,3 +56,11 @@ const { PORT } = require('../settings/express');
 
 // views
 app.use('/', require('../views/render/index'));
+
+// controllers
+app.use('/api/user', require('./user'));
+app.use('/api/userType', require('./userType'));
+app.use('/api/status', require('./status'));
+app.use('/api/category', require('./category'));
+app.use('/api/branch', require('./branch'));
+app.use('/api/complaint', require('./complaint'));
