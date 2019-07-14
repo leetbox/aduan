@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>E-Aduan Semboyan 1 Malaysia</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- App favicon -->
+        <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
+
+        <!-- Loading button css -->
+        <link href="../assets/libs/ladda/ladda-themeless.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- Bootstrap css -->
+        <link href="../assets/libs/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- Sweet Alert-->
+        <link href="../assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- Custom box css -->
+        <link href="../assets/libs/custombox/custombox.min.css" rel="stylesheet">
+
+        <!-- App css -->
+        <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body class="topbar-dark">
+
+        <!-- Navigation Bar-->
+        <header id="topnav">
+
+            <!-- Topbar Start -->
+            <div class="navbar-custom">
+                <div class="container-fluid">
+                    <ul class="list-unstyled topnav-menu float-right mb-0">
+
+                        <li class="dropdown notification-list">
+                            <!-- Mobile menu toggle-->
+                            <a class="navbar-toggle nav-link">
+                                <div class="lines">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                 </div>
+                            </a>
+                            <!-- End mobile menu toggle-->
+                        </li>
+    
+                        <li class="d-none d-sm-block">
+                            <form class="app-search">
+                                <div class="app-search-box">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Cari aduan ...">
+                                        <div class="input-group-append">
+                                            <button class="btn" type="submit">
+                                                <i class="fe-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </li>
+            
+                        <li class="dropdown notification-list">
+                            <a class="nav-link dropdown-toggle waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                <i class="fe-bell noti-icon"></i>
+                                <span class="badge badge-danger rounded-circle noti-icon-badge">9</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-lg">
+    
+                                <!-- item-->
+                                <div class="dropdown-item noti-title">
+                                    <h5 class="m-0">
+                                        <span class="float-right">
+                                            <a href="" class="text-dark">
+                                                <small>Hapus Semua</small>
+                                            </a>
+                                        </span>Aduan Baru
+                                    </h5>
+                                </div>
+    
+                                <div class="slimscroll noti-scroll">
+    
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item active">
+                                        <div class="notify-icon">
+                                            <img src="../assets/images/color/red.png" class="img-fluid rounded-circle" alt="" /> </div>
+                                        <p class="notify-details">Ah Long</p>
+                                        <p class="text-muted mb-0 user-msg">
+                                            <small>Sakinah Binti Zali</small>
+                                        </p>
+                                    </a>
+    
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <div class="notify-icon">
+                                            <img src="../assets/images/color/yellow.jpg" class="img-fluid rounded-circle" alt="" /> 
+                                        </div>
+                                        <p class="notify-details">Penipuan
+                                            <small class="text-muted">Hakimi Bin Zulyahya</small>
+                                        </p>
+                                    </a>
+    
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <div class="notify-icon">
+                                            <img src="../assets/images/color/yellow.jpg" class="img-fluid rounded-circle" alt="" /> </div>
+                                        <p class="notify-details">Insuran</p>
+                                        <p class="text-muted mb-0 user-msg">
+                                            <small>Awang Bin Haji Saod</small>
+                                        </p>
+                                    </a>
+    
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <div class="notify-icon">
+                                            <img src="../assets/images/color/red.png" class="img-fluid rounded-circle" alt="" /> </div>
+                                        <p class="notify-details">Ah Long</p>
+                                        <p class="text-muted mb-0 user-msg">
+                                            <small>Punita A/P Mariyama</small>
+                                        </p>
+                                    </a>
+                                </div>
+    
+                                <!-- All-->
+                                <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
+                                    View all
+                                    <i class="fi-arrow-right"></i>
+                                </a>
+    
+                            </div>
+                        </li>
+    
+                        <li class="dropdown notification-list">
+                            <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                <img src="../assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle">
+                                <span class="pro-user-name ml-1">
+                                    Ridhuan <i class="mdi mdi-chevron-down"></i> 
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <i class="fe-user"></i>
+                                    <span>Akaun Saya</span>
+                                </a>
+    
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <i class="fe-settings"></i>
+                                    <span>Tetapan</span>
+                                </a>
+    
+                                <div class="dropdown-divider"></div>
+    
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <i class="fe-log-out"></i>
+                                    <span>Keluar</span>
+                                </a>
+    
+                            </div>
+                        </li>
+    
+                    </ul>
+    
+                    <!-- LOGO -->
+                    <div class="logo-box">
+                        <a href="../utama" class="logo text-center">
+                            <span class="logo-lg">
+                                <img src="../assets/images/logo-aduan-i.png" alt="" height="18">
+                                <!-- <span class="logo-lg-text-light">UBold</span> -->
+                            </span>
+                            <span class="logo-sm">
+                                <!-- <span class="logo-sm-text-dark">U</span> -->
+                                <img src="assets/images/logo-sm.png" alt="" height="24">
+                            </span>
+                        </a>
+                    </div>
+    
+                    <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+            
+                        <li class="dropdown d-none d-lg-block">
+                            <a class="nav-link dropdown-toggle waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                Senarai Aduan
+                                <i class="mdi mdi-chevron-down"></i> 
+                            </a>
+                            <div class="dropdown-menu">
+                                <!-- item-->
+                                <a href="senarai" class="dropdown-item">
+                                    <i class="fe-alert-circle mr-1"></i>
+                                    <span>Baru</span>
+                                </a>
+    
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item">
+                                    <i class="fe-eye mr-1"></i>
+                                    <span>Pemerhatian</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item">
+                                    <i class="far fa-hand-rock mr-1"></i>
+                                    <span>Perlu Tindakan</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item">
+                                    <i class="fe-refresh-cw mr-1"></i>
+                                    <span>Sedang Urus</span>
+                                </a>
+
+                                <a href="javascript:void(0);" class="dropdown-item">
+                                    <i class="fe-check mr-1"></i>
+                                    <span>Selesai</span>
+                                </a>
+    
+                                <div class="dropdown-divider"></div>
+    
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item">
+                                    <i class="fe-x-circle mr-1"></i>
+                                    <span>Rekod Lama</span>
+                                </a>
+    
+                            </div>
+                        </li>
+
+                        <li class="dropdown d-none d-lg-block">
+                            <a class="nav-link dropdown-toggle waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                Pegawai
+                                <i class="mdi mdi-chevron-down"></i> 
+                            </a>
+                            <div class="dropdown-menu">
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item">
+                                    <i class="fe-user-plus mr-1"></i>
+                                    <span>Daftar Baru</span>
+                                </a>
+    
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item">
+                                    <i class="fe-menu mr-1"></i>
+                                    <span>Senarai</span>
+                                </a>
+
+                                <div class="dropdown-divider"></div>
+    
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item">
+                                    <i class="fe-x-circle mr-1"></i>
+                                    <span>Rekod Lama</span>
+                                </a>
+    
+                            </div>
+                        </li>
+
+                    </ul>
+                </div> <!-- end container-fluid-->
+            </div>
+            <!-- end Topbar -->
+
+        </header>
+        <!-- End Navigation Bar-->
+
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
+
+        <div class="wrapper" style="padding-top: 60px">
+            <div class="container-fluid">
+
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">E-Aduan</a></li>
+                                    <!--<li class="breadcrumb-item"><a href="javascript: void(0);">Pages</a></li>-->
+                                    <li class="breadcrumb-item">Aduan</li>
+                                    <li class="breadcrumb-item active">Butiran</li>
+                                </ol>
+                            </div>
+                            <h4 class="page-title">Butiran Aduan</h4>
+                        </div>
+                    </div>
+                </div>     
+                <!-- end page title --> 
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card-box ribbon-box">
+                            <div class="ribbon ribbon-danger float-left"><i class="fe-alert-circle mr-1"></i> Baru</div>
+                            <h5 class="text-black float-right mt-0">Maklumat Aduan</h5>
+                            <div class="ribbon-content">
+                                <h5>No. Aduan</h5>
+                                73WakrfVbNJBaAmhQtEeDv
+                                <h5>Cawangan</h5>
+                                Kampung Baru
+                                <h5>Tarikh</h5>
+                                12 Oktober 2019
+                                <h5>Hari dan Masa</h5>
+                                Rabu, 8.30 AM
+                                <h5>Kategori</h5>
+                                Jual Beli
+                                <h5>Laporan</h5>
+                                <div class="card-box m-0 p-0">
+                                    <!-- Long Content Scroll Modal -->
+                                    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
+                                        aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalScrollableTitle">Laporan Pengadu</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body" style="text-align: justify;">
+                                                    <!-- Here -->
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Tutup</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="button-list">
+                                        <button type="button" class="btn btn-outline-dark btn-xs waves-effect waves-light" data-toggle="modal" data-target="#exampleModalScrollable">Tunjuk Laporan</button>
+                                    </div>
+                                </div> <!-- end card-box-->
+                                <h5>Status</h5>
+                                Baru
+                                <h5>Lampiran</h5>
+                                <div class="form-group mb-0">
+                                    <label>Pilih Lampiran</label>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="pilih">
+                                            <label id='label-pilih' class="custom-file-label" for="pilih">.......</label>
+                                        </div>
+                                    </div>
+
+                                    <button class="mt-2 mb-2 offset-9 col-3 ladda-button btn btn-xs btn-outline-dark" data-spinner-color="#000" id="simpan" data-style="zoom-out">
+                                            Simpan
+                                    </button>
+                                    <div id="lampiran">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card-box ribbon-box">
+                            <h5 class="text-black float-right mt-0" style="padding-bottom: 18px">Maklumat Pengadu</h5>
+                            <div class="ribbon-content">
+                                <h5>Nama</h5>
+                                Muhammad Ridhuan Bin Md Hassan
+                                <h5>Kad Pengenalan</h5>
+                                911028 08 5075
+                                <h5>Passport</h5>
+                                Tiada
+                                <h5>Telefon</h5>
+                                017 671 2829
+                                <h5>Email</h5>
+                                mr.ridhuanhassan@gmail.com
+                                <h5>Jantina</h5>
+                                Lelaki
+                                <h5>Umur</h5>
+                                28 Tahun
+                                <h5>Bangsa</h5>
+                                Melayu
+                                <h5 style="text-align: justify">Alamat 1</h5>
+                                38-04-10, Apartment Sri Tioman 2,
+                                <h5 style="text-align: justify">Alamat 2</h5>
+                                Persiaran Pertahanan
+                                <h5>Poskod</h5>
+                                53100
+                                <h5>Daerah</h5>
+                                Gombak
+                                <h5>Negeri</h5>
+                                Kuala Lumpur
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card-box ribbon-box">
+                            <h5 class="text-black float-right mt-0" style="padding-bottom: 18px">Pengurusan</h5>
+                            <div class="ribbon-content">
+                                <div class="float-right">
+                                    <button type="button" class="btn btn-xs btn-secondary    btn-rounded waves-effect waves-light">
+                                        <span class="btn-label"><i class="fe-printer"></i></span>Penyelia
+                                    </button>
+                                    <button type="button" class="btn btn-xs btn-secondary btn-rounded waves-effect waves-light">
+                                        <span class="btn-label"><i class="fe-printer"></i></span>Petugas
+                                    </button>
+                                </div>
+                                <br>
+                                <h5 class="mt-3">Kemaskini Status Aduan</h5>
+                                <select class="selectpicker" data-style="btn-outline-dark">
+                                    <option>Pemerhatian</option>
+                                    <option>Perlu Tindakan</option>
+                                    <option>Sedang Urus</option>
+                                    <option>Selesai</option>
+                                </select>
+                                <!-- <div class="mt-2 offset-11 float-right">
+                                    <i class="fe-rotate-cw text-success"></i>
+                                </div> -->
+                                <button type="button" class="mt-1 offset-9 col-3 btn btn-xs btn-outline-dark waves-effect waves-light">Kemaskini</button>
+                                <div class="dropdown-divider"></div>
+                                <h5>Pilih Cawangan</h5>
+                                <select class="selectpicker" data-live-search="true" data-style="btn-outline-dark">
+                                    <option>Semua</option>
+                                    <option>Kampung Baru</option>
+                                    <option>Petaling Jaya</option>
+                                    <option>Dang Wangi</option>
+                                    <option>Bukit Nenas</option>
+                                </select>
+                                <h5>Tambah Pegawai Bertanggungjawab</h5>
+                                <select class="selectpicker" data-live-search="true" data-style="btn-outline-dark">
+                                    <option>13001 Ahmad Ridhuan Bin Kassim</option>
+                                    <option>13020 Nur Amira Binti Ruzaini</option>
+                                    <option>13040 Muadz Bin Jabbal</option>
+                                    <option>13041 Abdul Rahman Bin Auf</option>
+                                </select>
+                                <button type="button" class="mt-1 offset-9 col-3 btn btn-xs btn-outline-dark waves-effect waves-light">Tambah</button>
+                                <h5 class="mt-3">Senarai Pegawai Bertanggungjawab</h5>
+                                <div>Tiada</div>
+                                <div class="dropdown-divider"></div>
+                                <h5>Catatan Pegawai</h5>
+                                <div class="form-group mb-1">
+                                    <label for="example-textarea">Isi catatan</label>
+                                    <textarea class="form-control" id="example-textarea" rows="5"></textarea>
+                                </div>
+                                <button type="button" class="offset-9 col-3 btn btn-xs btn-outline-dark waves-effect waves-light">Catat</button>
+                                <h5>Senarai Catatan</h5>
+                                Tiada
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- end container -->
+        </div>
+        <!-- end wrapper -->
+
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
+
+        <!-- Footer Start -->
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        2019 &copy; Powered by <a href="">Lokal Network</a> 
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-md-right footer-links d-none d-sm-block">
+                            <a href="javascript:void(0);">Bug Report</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- end Footer -->
+
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+
+        <!-- Vendor js -->
+        <script src="../assets/js/vendor.min.js"></script>
+
+        <!-- Sweet Alerts js -->
+        <script src="../assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+        <!-- Modal-Effect -->
+        <script src="../assets/libs/custombox/custombox.min.js"></script>
+
+        <!-- Loading buttons js -->
+        <script src="../assets/libs/ladda/spin.js"></script>
+        <script src="../assets/libs/ladda/ladda.js"></script>
+
+        <!--Bootstrap Select-->
+        <script src="../assets/libs/bootstrap-select/bootstrap-select.min.js"></script>
+
+        <!-- Sweet Alerts js -->
+        <script src="../assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+        <script>
+            function buangLampiran(context) {
+                Swal.fire({
+                    title: "Anda pasti?",
+                    text: "Anda tidak boleh dapatkannya semula!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Ya, hapuskan!",
+                    cancelButtonText: "Tidak, batalkan!",
+                }).then(function(t) {
+                    if (t.value) {
+                        $(`#${context}`).remove();
+                        Swal.fire("Dihapuskan!", "File tersebut telah dihapuskan!", "success")
+                    }
+                })
+            }
+
+            $('#simpan').click(function(e){
+                e.preventDefault();
+                var l = Ladda.create(this);
+                l.start();
+                $.get("http://localhost:8181/masuk", function(data, status){
+                    $('#lampiran').append(`<p id="magic" class="mt-1"><i class="fe-file-text"></i><span style="cursor:pointer;" class="pl-2">Salinan Kad Pengenalan.jpg</span><a onClick="buangLampiran('magic')" class="fe-delete float-right text-danger" style="padding-top:5px;cursor:pointer;"></a></p>`);
+                }).always(function() { l.stop(); });;
+
+                return false;
+            });
+
+            $("#pilih").change(function(e) {
+                const data = new FormData();
+                if ($(this).prop('files').length > 0)
+                {
+                    file =$(this).prop('files')[0];
+                    data.append("file", file);
+
+                    $('#label-pilih').text(file.name);
+                } else {
+
+                }
+            });
+        </script>
+
+        <!-- App js-->
+        <script src="../assets/js/app.min.js"></script>
+        
+    </body>
+</html>
