@@ -138,3 +138,13 @@ exports.update = async (input) => {
 		.where({ id, deleted })
 		.patch(u);
 };
+
+exports.delete = async (input) => {
+  const { id } = input;
+  const deleted = false;
+
+  return User
+  	.query()
+    .where({ id, deleted })
+    .delete();
+};
