@@ -64,3 +64,6 @@ app.use('/api/status', require('./status'));
 app.use('/api/category', require('./category'));
 app.use('/api/branch', require('./branch'));
 app.use('/api/complaint', require('./complaint'));
+
+// frontend request
+app.use('/request/user', require('./frontend/user'));
