@@ -33,3 +33,33 @@ router.post('/login', async (req, res) => {
 
 	res.redirect('/utama');
 });
+
+router.get('/logout', async (req, res) => {
+	const {
+		refreshToken,
+		accessToken,
+	} = Cookie.getCookie(req);
+
+	const logout = await request({
+	  method: 'post',
+	  url: `/api/user/logout`,
+	  data: {
+	    userId: req.query.id,
+	    refreshToken,
+	  },
+	})
+	.catch(err => ({
+		status: err.response.status,
+	}));
+
+	Cookie.setCookie(res, {
+		accessToken: 'ridhuan',
+		refreshToken: 'hassan',
+	})
+
+	if (logout.data) {
+		res.redirect('/masuk');
+	}
+});
+
+module.exports = router;
