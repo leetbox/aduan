@@ -15,3 +15,17 @@ router.post('/', (req, res) => {
 		})
 	);
 });
+
+router.get('/', (req, res) => {
+	const input = req.query;
+
+	return complaintController
+		.read(input)
+		.then(data => res.status(200).json(data))
+		.catch(error => res.status(400).json({
+			error: {
+				message: error.message,
+			},
+		})
+	);
+});
