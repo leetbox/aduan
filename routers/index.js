@@ -74,3 +74,12 @@ const server = http
 	.listen(PORT || 3000, () => {
 		console.log(`ADUAN START at PORT ${PORT}`);
 	});
+
+/* https
+	.createServer({
+	  key: fs.readFileSync('server.key'),
+	  cert: fs.readFileSync('server.cert')
+	}, app)
+	.listen(PORT || 3000, () => {
+		console.log(`ADUAN START at PORT ${PORT}`);
+	}) */
