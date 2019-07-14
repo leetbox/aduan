@@ -29,3 +29,18 @@ router.get('/', (req, res) => {
 		})
 	);
 });
+
+router.patch('/:id', (req, res) => {
+	const input = req.body;
+	input.id = req.params.id;
+
+	return categoryController
+		.update(input)
+		.then(data => res.status(200).json(data))
+		.catch(error => res.status(400).json({
+			error: {
+				message: error.message,
+			},
+		})
+	);
+});
