@@ -71,9 +71,10 @@ app.use('/api/complaint', require('./complaint'));
 
 // live updates
 app.use('/live', require('./live'));
+
 // frontend request
 app.use('/request/user', require('./frontend/user'));
-
+app.use('/request/complaint', require('./frontend/complaint'));
 
 const server = http
 	.createServer(app)
