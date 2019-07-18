@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const request = require('../../libraries/request');
+const httpRequest = require('../../libraries/request');
 const host = require('../../settings/host');
 const Cookie = require('../../libraries/cookie');
 
@@ -9,7 +9,7 @@ router.post('/login', async (req, res) => {
 		password,
 	} = req.body;
 
-	const login = await request({
+	const login = await httpRequest({
 	  method: 'post',
 	  url: `/api/user/login`,
 	  data: {
@@ -40,7 +40,7 @@ router.get('/logout', async (req, res) => {
 		accessToken,
 	} = Cookie.getCookie(req);
 
-	const logout = await request({
+	const logout = await httpRequest({
 	  method: 'post',
 	  url: `/api/user/logout`,
 	  data: {
