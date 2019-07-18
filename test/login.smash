@@ -1,0 +1,7 @@
+Open Chrome
+
+    Navigate to 'http://127.0.0.1:8181/masuk'
+
+        Type 'ridhuan@gmail.com' into 'input[name=email]'
+
+            Type 'password[enter]' into 'input[name=password]'
