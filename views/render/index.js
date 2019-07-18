@@ -8,8 +8,8 @@ router.get('/masuk', global.xsrfProtection, require('./login'));
 
 router.get('/utama', global.xsrfProtection, auth.checkAuth(), require('./home'));
 
-router.get('/aduan/senarai', require('./list'));
+router.get('/aduan/senarai', global.xsrfProtection, auth.checkAuth(), require('./list'));
 
-router.get('/aduan/butiran', require('./complaint'));
+router.get('/aduan/butiran', global.xsrfProtection, auth.checkAuth(), require('./complaint'));
 
 module.exports = router;
