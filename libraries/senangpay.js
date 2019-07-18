@@ -37,3 +37,35 @@ exports.prepare = (input) => {
     </html>
   `;
 };
+
+exports.callback = (input) => {
+  const {
+    status_id,
+    order_id,
+    msg,
+    transaction_id,
+    hash,
+  } = input;
+
+  const preHash = `${settings.secretKey}${status_id}${order_id}${transaction_id}${msg}`
+  const confirmationHash = crypto.createHash('md5').update(preHash).digest('hex');
+
+  if (hash === confirmationHash) {
+    if (status_id === 1) {
+      return {
+        status: true,
+        msg,
+      };
+    } else {
+      return {
+        status: false,
+        msg,
+      };
+    }
+  }
+
+  return {
+    status: false,
+    msg,
+  };
+}
