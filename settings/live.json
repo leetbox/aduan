@@ -1,0 +1,17 @@
+{
+  "dashboard" : {
+    "url": [
+      "http://localhost:8181/utama",
+      "https://e-aduan.semboyan1malaysia.com/utama"
+    ]
+  },
+  "notification" : {
+    "url": [
+      "http://localhost:8181/utama",
+      "http://localhost:8181/senarai",
+      "http://localhost:8181/butiran",
+      "http://localhost:8181/akaun",
+      "http://localhost:8181/tetapan"
+    ]
+  }
+}
