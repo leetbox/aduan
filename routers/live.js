@@ -1,8 +1,12 @@
 const router = require('express').Router();
+const cote = require('cote');
+
+const subs = require('../libraries/pubsub');
+
+const liveSettings = require('../settings/live.json');
 
 router.get('/dashboard', (req, res) => {
-  // origin hardcoded for now
-  if (req.header('Referer') !== 'http://localhost:8181/utama') {
+  if (!liveSettings.dashboard.url.includes(req.header('Referer'))) {
     res.status(400).end();
     return;
   }
@@ -11,12 +15,29 @@ router.get('/dashboard', (req, res) => {
     connection: 'keep-alive',
     'cache-control': 'no-cache',
     'content-Type': 'text/event-stream',
-    'Access-Control-Allow-Origin': 'http://www.google.com'
+    // 'Access-Control-Allow-Origin': 'place-url'
   });
 
-  setInterval(() => {
-    res.write(`data: ${Math.random()}\n\n`);
-  }, 2000);
+  subs.on('dashboard.update', (data) => {
+    res.write(`data: ${JSON.stringify(data)}\n\n`);
+  });
+});
+
+router.get('/notify', (req, res) => {
+  if (!liveSettings.notification.url.includes(req.header('Referer'))) {
+    res.status(400).end();
+    return;
+  }
+
+  res.status(200).set({
+    connection: 'keep-alive',
+    'cache-control': 'no-cache',
+    'content-Type': 'text/event-stream',
+  });
+
+  subs.on('notification.update', (data) => {
+    res.write(`data: ${JSON.stringify(data)}\n\n`);
+  });
 });
 
 module.exports = router;
