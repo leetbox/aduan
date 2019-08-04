@@ -76,28 +76,33 @@ app.use('/live', require('./live'));
 app.use('/request/user', require('./frontend/user'));
 app.use('/request/complaint', require('./frontend/complaint'));
 
-const server = http
+/* const server = http
 	.createServer(app)
-	.listen(PORT || 3000, () => {
-		console.log(`ADUAN START at PORT ${PORT}`);
-	});
+	.listen(PORT_NOT_SECURE || 3000, () => {
+		console.log(`ADUAN START at PORT ${PORT_NOT_SECURE}`);
+	}); */
 
-/* https
+const serverSecure = https
 	.createServer({
-	  key: fs.readFileSync('server.key'),
-	  cert: fs.readFileSync('server.cert')
+	  key: fs.readFileSync(`${__dirname}/../cert/key.pem`),
+	  cert: fs.readFileSync(`${__dirname}/../cert/cert.pem`)
 	}, app)
-	.listen(PORT || 3000, () => {
-		console.log(`ADUAN START at PORT ${PORT}`);
-	}) */
+	.listen(PORT_SECURE || 3000, () => {
+		console.log(`ADUAN SECURE START at PORT ${PORT_SECURE}`);
+	});
 
 process.on('SIGTERM', () => {
 	// TODO
 });
 
 process.on('SIGINT', () => {
-	server.close(() => {
+	/* server.close(() => {
     console.log('HTTP CLOSED');
-    process.exit(1);
-  });
+		process.exit(1);
+  }); */
+
+	serverSecure.close(() => {
+		console.log('HTTPS CLOSED');
+		process.exit(1);
+	});
 });
