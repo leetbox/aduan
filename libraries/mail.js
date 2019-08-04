@@ -1,6 +1,8 @@
 const gmail = require('gmail-send');
 
-exports.gmail = async (config, to, subject, text) => {
+exports.gmail = async (config, to, subject, text, html) => {
+	const { user, pass } = config;
+
 	return new Promise((resolve, reject) => {
 		gmail({
 	  		user,
@@ -8,11 +10,10 @@ exports.gmail = async (config, to, subject, text) => {
 	  	  to,
 	  	  subject,
 	  	  text,
-	  	  html,       
+	  	  html,
 	  	})({}, function (err, res) {
 	  		if (err) reject(err);
 	  	  resolve(res);
 	  	});
 	});
 }
-
