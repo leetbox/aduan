@@ -116,6 +116,9 @@ app.use('/request/complaint', require('./frontend/complaint'));
 		console.log(`ADUAN START at PORT ${PORT_NOT_SECURE}`);
 	}); */
 
+// https://stackoverflow.com/questions/31673587/ - mkcert does not create fullchain cert
+https.globalAgent.options.ca = fs.readFileSync(`${__dirname}/../cert/cert.pem`);
+
 const serverSecure = https
 	.createServer({
 	  key: fs.readFileSync(`${__dirname}/../cert/key.pem`),
