@@ -5,12 +5,21 @@ const xsrf = require('csurf');
 const blockXSRF = require('../libraries/block-xsrf');
 const helmet = require('helmet');
 const hpp = require('hpp');
+const fs = require('fs');
 const https = require('https');
 const http = require('http');
 const morgan = require('morgan');
 const path = require('path');
+const uuid = require('uuid');
 
 const limiter = require('../libraries/bruteforce');
+
+const {
+  HTTP_DOMAIN,
+  HTTPS_DOMAIN,
+  PORT_NOT_SECURE,
+  PORT_SECURE,
+} = require('../settings/express');
 
 // xsrf protection
 const xsrfProtection = xsrf({ cookie: true });
@@ -26,6 +35,12 @@ app.use(cookieParser());
 app.use("/api/", limiter.all);
 app.use("/api/user/login", limiter.auth);
 
+// generate nonce
+app.use((req, res, next) => {
+  res.locals.nonce = Buffer.from(uuid.v4()).toString('base64');
+  next();
+});
+
 // helmet
 app.use(helmet.hidePoweredBy({ setTo: 'Ridhuan Hassan' }));
 app.use(helmet.dnsPrefetchControl());
@@ -36,7 +51,28 @@ app.use(helmet.ieNoOpen());
 app.use(helmet.frameguard({ action: 'sameorigin' }));
 app.use(helmet.hsts({ maxAge: 5184000 }));
 app.use(helmet.noCache());
+
+const secureURL = `${HTTPS_DOMAIN}:${PORT_SECURE}`;
+
 // TODO read and apply CSP
+app.use(helmet.contentSecurityPolicy({
+	directives: {
+		// defaultSrc: [`'self'`],
+    defaultSrc: [secureURL],
+		// baseUri: [`'self'`],
+    baseUri: [secureURL],
+		// scriptSrc: [`'self'`, `'unsafe-inline'`],
+		scriptSrc: [secureURL, (req, res) => `'nonce-${ res.locals.nonce }'`], // , `'strict-dynamic'`],
+		// styleSrc: [`'self'`, 'https://fonts.googleapis.com/', `'unsafe-inline'`],
+		styleSrc: [secureURL, 'https://fonts.googleapis.com/', `'unsafe-inline'`],
+		// fontSrc: [`'self'`, 'https://fonts.gstatic.com/'],
+		fontSrc: [secureURL, 'https://fonts.gstatic.com/'],
+		// imgSrc: [`'self'`, 'data:'],
+		imgSrc: [secureURL, 'data:'],
+		objectSrc: [`'none'`],
+		upgradeInsecureRequests: true,
+	}
+}));
 
 // view engine
 app.set('view engine', 'ejs');
