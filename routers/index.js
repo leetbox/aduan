@@ -56,22 +56,22 @@ const secureURL = `${HTTPS_DOMAIN}:${PORT_SECURE}`;
 
 // TODO read and apply CSP
 app.use(helmet.contentSecurityPolicy({
-	directives: {
-		// defaultSrc: [`'self'`],
+  directives: {
+    // defaultSrc: [`'self'`],
     defaultSrc: [secureURL],
-		// baseUri: [`'self'`],
+    // baseUri: [`'self'`],
     baseUri: [secureURL],
-		// scriptSrc: [`'self'`, `'unsafe-inline'`],
-		scriptSrc: [secureURL, (req, res) => `'nonce-${ res.locals.nonce }'`], // , `'strict-dynamic'`],
-		// styleSrc: [`'self'`, 'https://fonts.googleapis.com/', `'unsafe-inline'`],
-		styleSrc: [secureURL, 'https://fonts.googleapis.com/', `'unsafe-inline'`],
-		// fontSrc: [`'self'`, 'https://fonts.gstatic.com/'],
-		fontSrc: [secureURL, 'https://fonts.gstatic.com/'],
-		// imgSrc: [`'self'`, 'data:'],
-		imgSrc: [secureURL, 'data:'],
-		objectSrc: [`'none'`],
-		upgradeInsecureRequests: true,
-	}
+    // scriptSrc: [`'self'`, `'unsafe-inline'`],
+    scriptSrc: [secureURL, (req, res) => `'nonce-${ res.locals.nonce }'`], // , `'strict-dynamic'`],
+    // styleSrc: [`'self'`, 'https://fonts.googleapis.com/', `'unsafe-inline'`],
+    styleSrc: [secureURL, 'https://fonts.googleapis.com/', `'unsafe-inline'`],
+    // fontSrc: [`'self'`, 'https://fonts.gstatic.com/'],
+    fontSrc: [secureURL, 'https://fonts.gstatic.com/'],
+    // imgSrc: [`'self'`, 'data:'],
+    imgSrc: [secureURL, 'data:'],
+    objectSrc: [`'none'`],
+    upgradeInsecureRequests: true,
+  }
 }));
 
 // view engine
