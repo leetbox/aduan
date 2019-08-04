@@ -1,3 +1,6 @@
 {
-	"PORT": 8181
+	"HTTP_DOMAIN": "http://localhost",
+	"HTTPS_DOMAIN": "https://localhost",
+	"PORT_NOT_SECURE": 8181,
+	"PORT_SECURE": 4141
 }
