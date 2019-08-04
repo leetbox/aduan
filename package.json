@@ -36,5 +36,8 @@
     "objection": "^1.6.9",
     "objection-soft-delete": "^1.0.5",
     "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "jest": "^24.8.0"
   }
 }
