@@ -42,7 +42,7 @@ app.use(helmet.noCache());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '../views'));
 
-app.use('/assets', express.static(path.join(`${__dirname}/../views/`, 'assets')))
+app.use('/assets', express.static(path.join(`${__dirname}/../views/`, 'assets')));
 
 // create application/json parser
 app.use(bodyParser.json());
