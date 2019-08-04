@@ -4,7 +4,10 @@
   "description": "semboyan1malaysia e-aduan",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
+  },
+  "jest": {
+    "testRegex": "test-api/.*\\.(js|jsx)$"
   },
   "keywords": [
     "e-aduan"
